@@ -1,5 +1,12 @@
 'use strict';
 
+//app.run() runs one time/ application, AFTER the config
+	// the time to add variables
+
+app.run(function (FIREABASE_CONFIG){
+	firebase.initializeApp(FIREABASE_CONFIG);
+});
+
 app.config(function($routeProvider){
 	$routeProvider
 	.when("/auth", {

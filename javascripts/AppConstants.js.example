@@ -1,0 +1,10 @@
+'use strict';
+
+app.constant("FIREABASE_CONFIG", {
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+});
