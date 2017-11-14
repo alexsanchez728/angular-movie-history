@@ -11,5 +11,5 @@ app.controller("AuthCtrl", function ($location, $rootScope, $scope, AuthService)
     }).catch((error) => {
       console.log("error in authenticateGoogle", error);
     });
-  }
+  };
 });
