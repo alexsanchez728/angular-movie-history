@@ -2,4 +2,4 @@
 
 'use strict';
 
-const app = angular.module("MovieApp", ["ngAnimate", "ngRoute", "ngSantize"]);
+const app = angular.module("MovieApp", ["ngAnimate", "ngRoute", "ngSanitize"]);
