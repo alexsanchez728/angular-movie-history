@@ -28,11 +28,20 @@ app.controller("SearchCtrl", function ($location, $rootScope, $scope, MovieServi
 
 	$scope.saveRated = ((tmdbMovie) => {
 
-		console.log("tmdbMovie", tmdbMovie);
-
 		let newMovie = createMovie(tmdbMovie);
 		MovieService.postNewMovie(newMovie).then(() => {
 			$location.path('/rated');
+		}).catch((err) => {
+			console.log("error in postNewMovie", err);
+		});
+	});
+
+	$scope.saveWishlist = ((tmdbMovie) => {
+
+		let newMovie = createMovie(tmdbMovie);
+		newMovie.isWatched = false;
+		MovieService.postNewMovie(newMovie).then(() => {
+			$location.path('/wishlist');
 		}).catch((err) => {
 			console.log("error in postNewMovie", err);
 		});
