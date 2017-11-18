@@ -15,20 +15,12 @@ app.controller("SearchCtrl", function ($location, $rootScope, $scope, MovieServi
 		}
 	}; // end enterPush
 
-	const createMovie = (movie) => {
-		return {
-			"title": movie.title,
-			"overview": movie.overview,
-			"poster_path": movie.poster_path,
-			"rating": 0,
-			"isWatched": true,
-			"uid": $rootScope.uid
-		};
-	};
 
 	$scope.saveRated = ((tmdbMovie) => {
-
-		let newMovie = createMovie(tmdbMovie);
+		tmdbMovie.uid = $rootScope.uid;
+		tmdbMovie.isWatched = true;
+		tmdbMovie.rating = 0;
+		let newMovie = MovieService.createMovieObject(tmdbMovie);
 		MovieService.postNewMovie(newMovie).then(() => {
 			$location.path('/rated');
 		}).catch((err) => {
@@ -37,9 +29,10 @@ app.controller("SearchCtrl", function ($location, $rootScope, $scope, MovieServi
 	});
 
 	$scope.saveWishlist = ((tmdbMovie) => {
-
-		let newMovie = createMovie(tmdbMovie);
-		newMovie.isWatched = false;
+		tmdbMovie.uid = $rootScope.uid;
+		tmdbMovie.isWatched = false;
+		tmdbMovie.rating = 0;
+		let newMovie = MovieService.createMovieObject(tmdbMovie);
 		MovieService.postNewMovie(newMovie).then(() => {
 			$location.path('/wishlist');
 		}).catch((err) => {
