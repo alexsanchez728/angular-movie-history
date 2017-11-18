@@ -5,6 +5,7 @@
   
     <div ng-repeat="movie in movies" class="col-sm-6 col-md-4 movie">
       <div class="thumbnail">
+        <button class="btn btn-defulat detail" ng-click="movieDetail(movie.id)"><i class="fa fa-search" aria-hidden="true"></i></button>
         <button class="btn btn-defulat delete" ng-click="deleteMovie(movie.id)">X</button>
         <img class="poster_path" ng-src="{{image_url}}/w342/{{movie.poster_path}}" alt="">
         <div class="caption">
